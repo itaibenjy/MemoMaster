@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const usersRoutes = require('./routes/userRouter');
 const mongoose = require('mongoose');
+const router = require('./routes/router');
 
 
 // middleware - code that runs when server gets a request but before it gets passed to the routes
@@ -14,8 +15,8 @@ app.use((req, res, next) => {
 });
 
 
-// routes
-app.use('/api/user', usersRoutes);
+// routes middleware
+app.use('/', router)
 
 const port = process.env.PORT || 5000;
 
