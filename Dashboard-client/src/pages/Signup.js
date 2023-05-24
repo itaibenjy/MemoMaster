@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useSignup } from "../hooks/useSignup";
+
+// components
 import LoginInput from "../components/LoginInput";
 
 function Signup(){
@@ -11,10 +14,12 @@ function Signup(){
     email: "",
   })
 
+  const {signup, error, isLoading} = useSignup()
+
   async function handleSubmit(event) {
     event.preventDefault();
 
-    console.log(details);
+    await signup(details);
   }
 
   function handleChange(event) {
@@ -46,7 +51,8 @@ function Signup(){
           />
         )})}
 
-      <button type="submit">Sign Up</button>
+      <button disabled={isLoading} onClick={handleChange}>Sign Up</button>
+      {error && <div className="error">{error}</div>}
     </form>
   )
 }
