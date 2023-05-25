@@ -10,8 +10,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <div className="pages">
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/login">Log In</Link>
           <Routes>
             <Route 
             path = "/signup"
