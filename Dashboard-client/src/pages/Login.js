@@ -1,7 +1,10 @@
 import { useState } from "react";
 import LoginInput from "../components/LoginInput";
+import { useLogin } from "../hooks/useLogin";
 
 function Login(){
+  const { login, error, isLoading } = useLogin()
+
   const [details, setDetails] = useState({
     username: "",
     password: "",
@@ -9,8 +12,8 @@ function Login(){
 
   async function handleSubmit(event) {
     event.preventDefault();
-
-    console.log(details);
+    
+    await login(details)
   }
 
   function handleChange(event) {
@@ -42,7 +45,8 @@ function Login(){
           />
         )})}
 
-      <button type="submit">Log in</button>
+      <button disabled={isLoading} type="submit">Log in</button>
+      {error && <div className="error">{error}</div>}
     </form>
   )
 }
