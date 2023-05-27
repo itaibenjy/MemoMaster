@@ -35,3 +35,13 @@ module.exports = requireAuth
 // this will require authentication for all routes below this line
 // to require authentication for a specific route, add requireAuth as a second argument to the route
 // router.get('/api/protected', requireAuth, (req, res) => {})
+
+
+// how to use this auth in react app
+// import useAuthContext from '../hooks/useAuthContext'
+// const { user } = useAuthContext()
+// if user is not null then user is authenticated
+// fetch('/api/protected', {
+//   headers: {
+//     Authorization: `Bearer ${user.token}`
+// }
