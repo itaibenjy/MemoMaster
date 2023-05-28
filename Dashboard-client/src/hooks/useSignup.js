@@ -7,6 +7,8 @@ export function useSignup(){
     const { dispatch } = useAuthContext()
 
     async function signup(details) {
+        setError(null)
+
         // check if the passwords match
         if (details.password !== details.confirmPassword) {
         setError("Passwords do not match")
