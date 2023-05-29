@@ -27,7 +27,7 @@ async function requireAuth(req, res, next) {
 
 }
 
-module.exports = requireAuth
+module.exports = requireAuth;
 
 // How to use this middleware in a route:
 // const requireAuth = require('../middleware/requireAuth')

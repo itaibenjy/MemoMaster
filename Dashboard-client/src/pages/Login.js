@@ -37,9 +37,6 @@ function Login(){
   const types = ["text", "password"]
 
   return (
-    <MDBContainer fluid>
-       <MDBRow className="justify-content-center">
-        <MDBCol xl='3' lg='4' md='6' sm='8' className="text-center">
           <form onSubmit={handleSubmit}>
             <h3 className="my-3">Log in</h3>
             {labels.map((label, index) => {
@@ -63,9 +60,6 @@ function Login(){
               <MDBBtn type='submit' size='lg' className='my-2'>Log in</MDBBtn>
               }
           </form>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
   )
 }
 

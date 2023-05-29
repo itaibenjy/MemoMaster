@@ -1,16 +1,11 @@
 import {
-  MDBValidation,
-  MDBValidationItem,
   MDBInput,
-  MDBInputGroup,
-  MDBBtn,
-  MDBCheckbox
 } from 'mdb-react-ui-kit';
 
 
 function LoginInput({ handleChange, name, label, value , type}) {
     return (
-      <MDBInput
+      <MDBInput className='my-3'
           type={type}
           size="lg"
           value={value}
