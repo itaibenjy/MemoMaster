@@ -1,5 +1,7 @@
+// Import the Note model
 const Note = require('../models/Note');
 
+// Get all notes for the authenticated user
 async function getAllNotes(req, res) {
     try {
         const notes = await Note.find({owner: req.user._id});
@@ -9,6 +11,7 @@ async function getAllNotes(req, res) {
     }
 }
 
+// Create a new note for the authenticated user
 async function createNote(req, res) {
     const {title, content, color} = req.body;
     if (!title || !content) {
@@ -22,15 +25,18 @@ async function createNote(req, res) {
     }
 }
 
+// Update a note by ID for the authenticated user
 async function updateNoteById(req, res) {
     try {
-        const updatedNote = await Note.findByIdAndUpdate({_id: req.params.id}, {...req.body});
-        res.status(200).json(updatedNote);
+        const oldNote = await Note.findByIdAndUpdate({_id: req.params.id}, {...req.body});
+        const newNote = await Note.findById(req.params.id);
+        res.status(200).json(newNote);
     } catch (error) {
         res.status(500).json({error: error.message});
     }
 }
 
+// Delete a note by ID for the authenticated user
 async function deleteNoteById(req, res) {
     try {
         await Note.findByIdAndDelete(req.params.id);
@@ -40,5 +46,5 @@ async function deleteNoteById(req, res) {
     }
 }
 
-
-module.exports = {getAllNotes, createNote, updateNoteById, deleteNoteById}
+// Export the functions to be used in other files
+module.exports = {getAllNotes, createNote, updateNoteById, deleteNoteById}// Import the Note model

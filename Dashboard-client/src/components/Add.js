@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import {MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon, MDBContainer} from 'mdb-react-ui-kit';
-import AddNoteModal from './AddNoteModal';
+import NoteModal from './NoteModal';
 
 function handleClick(event) {
     console.log(event.target)
 }
 
-export default function Add({}) {
+export default function Add({addNote}) {
+
 
     const [showAddNote, setShowAddNote] = useState(false)
 
@@ -14,14 +15,18 @@ export default function Add({}) {
         setShowAddNote(!showAddNote)
     }
 
-    function createNote(title, content , color) {
-        console.log("createNote" , title, content, color)
+    async function createNote(title, content , color) {
+        await addNote({
+            title,
+            content,
+            color
+        })
     }
 
 
       return (
       <>
-      <AddNoteModal showAddNote={showAddNote} setShowAddNote={setShowAddNote} toggleShowAddNote={toggleAddNote} createNote={createNote}/>
+      <NoteModal key="1" modalTitle="Add New Note" modalButton="Create Note" showAddNote={showAddNote} setShowAddNote={setShowAddNote} toggleShowAddNote={toggleAddNote} createUpdateNote={createNote}/>
       <MDBDropdown dropleft group>
         <MDBDropdownToggle color="link" > <MDBIcon fas icon='plus' size='lg' /> </MDBDropdownToggle>
         <MDBDropdownMenu>

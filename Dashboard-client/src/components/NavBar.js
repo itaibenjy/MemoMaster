@@ -26,9 +26,9 @@ function NavBar(){
   }
 
  return (
-    <MDBNavbar className="m-0">
+    <MDBNavbar sticky className="m-0">
       <MDBContainer fluid className="flex-nowrap">
-        <MDBNavbarBrand><i class="far fa-calendar-check fa-xl"></i></MDBNavbarBrand>
+        <MDBNavbarBrand><i className="far fa-calendar-check fa-xl"></i></MDBNavbarBrand>
         <MDBContainer className='d-flex align-items-center justify-content-end m-0'>
           {user && 
           <MDBBtn rounded size="sm" className="mx-2" onClick={handleClick}>Logout</MDBBtn>}

@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 
 // components
-import LoginInput from "../components/LoginInput";
-import { Error } from '../components/Error';
+import LoginInput from "./LoginInput";
+import Error from './Error';
 import { MDBSpinner, MDBBtn, MDBCol, MDBRow, MDBContainer} from 'mdb-react-ui-kit';
 
 
