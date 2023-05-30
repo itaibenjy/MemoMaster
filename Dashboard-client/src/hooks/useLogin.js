@@ -7,7 +7,7 @@ export function useLogin(){
     const { dispatch } = useAuthContext()
 
     async function login(details) {
-
+        setError(null)
         setIsLoading(true)
         const response = await fetch("/api/user/login", {
             method: "POST",
