@@ -12,7 +12,7 @@ const Watch = () => {
     }, []);
 
     return (
-        <MDBTypography tag='h1' style={{fontFamily: 'Monomania'}} className='display-1'>{time.toLocaleTimeString([], {hour12: false})}</MDBTypography>
+        <MDBTypography tag='h1' style={{fontFamily: 'Monomania'}} className='display-1'>{time.toLocaleTimeString("en-UK", {hour12: false})}</MDBTypography>
     );
 };
 
