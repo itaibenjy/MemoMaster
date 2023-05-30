@@ -10,7 +10,7 @@ export function useDate(dateVar) {
     const [isTimeAgo, setIsTimeAgo] = useState(true);
 
     // format date to be more readable
-    const date = new Date(dateVar).toLocaleString("en-US", {dateStyle: "medium", timeStyle: "short", hour12: false});
+    const date = new Date(dateVar).toLocaleString("en-UK", {dateStyle: "medium", timeStyle: "short", hour12: false});
     const [dateFormat, setDateFormat] = useState(timeAgo);
 
     // use effect to update time ago every second to keep it up to date

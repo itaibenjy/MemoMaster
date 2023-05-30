@@ -25,7 +25,7 @@ export default function Note({note, deleteNote, updateNote}) {
     
       return (<>
 <NoteModal key={note._id} modalTitle="UpdateNote" modalButton="Update Note" showAddNote={showUpdateNote} setShowAddNote={setShowUpdateNote} toggleShowAddNote={toggleUpdateNote} createUpdateNote={updateNote} note={note}/>
-<ModalDialog title="Delete Note" content={`You are about to delete this note?`} btnLabel="Delete" btnColor="danger" handleClick={()=>deleteNote(_id)} showModel={showModal} setShowModal={setShowModal} toggleShow={toggleShowModal}/>  
+<ModalDialog title="Delete Note" content={`You are about to delete this note?`} btnLabel="Delete" btnColor="danger" handleClick={()=> {toggleShowModal(); deleteNote(_id);}} showModel={showModal} setShowModal={setShowModal} toggleShow={toggleShowModal}/>  
     <MDBCol lg='4' md='6' sm='6' xs='12'>
         <MDBContainer className={`alert alert-${color}`} role="alert">
             <MDBContainer className="p-0 d-flex">
@@ -35,7 +35,12 @@ export default function Note({note, deleteNote, updateNote}) {
                     <MDBBtn tag='a' color='none'><MDBIcon fas icon='trash-alt' onClick={toggleShowModal}/></MDBBtn>
                 </span>
             </MDBContainer>
-            <MDBTypography>{content}</MDBTypography>
+            <MDBTypography>
+                {/* implement line break */}
+                {content.split('\n').map((line, index) => (
+                    <span key={index}>{line}<br/></span>
+                ))}
+                </MDBTypography>
             <MDBContainer className="text-end">
                 <MDBTypography onClick={toggleDateFormat} tag='small'> {dateFormat} </MDBTypography>
             </MDBContainer>

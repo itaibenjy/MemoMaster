@@ -34,9 +34,9 @@ export default function NoteModal({showAddNote, setShowAddNote, toggleShowAddNot
   }
   
   // Function to create a new note
-  async function createUpdateNewNote() {
+  function createUpdateNewNote() {
     if (note) {
-      await createUpdateNote(note._id, details)
+      createUpdateNote(note._id, details)
     }
     else {
       createUpdateNote(details.title, details.content, details.color)
