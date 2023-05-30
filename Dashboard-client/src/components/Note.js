@@ -2,15 +2,18 @@ import { MDBCol, MDBContainer, MDBTypography, MDBBtn, MDBIcon } from "mdb-react-
 import ModalDialog from "./ModalDialog";
 import NoteModal from "./NoteModal";
 import { useState } from "react";
+import { useDate } from "../hooks/useDate";
+
 
 
 export default function Note({note, deleteNote, updateNote}) {
 
     const {title, content, color, createdAt, _id} = note;
-    const date = new Date(createdAt).toLocaleDateString();
 
     const [showModal, setShowModal] = useState(false);
     const [showUpdateNote, setShowUpdateNote] = useState(false);
+
+    const {dateFormat, toggleDateFormat} = useDate(createdAt);
 
     function toggleShowModal() {
         setShowModal(!showModal);
@@ -34,7 +37,7 @@ export default function Note({note, deleteNote, updateNote}) {
             </MDBContainer>
             <MDBTypography>{content}</MDBTypography>
             <MDBContainer className="text-end">
-                <MDBTypography tag='small'> {date} </MDBTypography>
+                <MDBTypography onClick={toggleDateFormat} tag='small'> {dateFormat} </MDBTypography>
             </MDBContainer>
         </MDBContainer>
     </MDBCol>
