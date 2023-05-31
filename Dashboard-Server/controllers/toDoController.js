@@ -1,40 +1,66 @@
-const ToDoModel = require("../models/ToDo");
+const ToDoList = require("../models/ToDoList");
+const ToDoText = require("../models/ToDoText");
 
-module.exports.getToDo = async (req, res) => {
-    const todo = await ToDoModel.find();
-    res.send(todo);
+
+async function getToDo(req, res) {
+    try {
+      const todolists = await ToDoList.find({ ownerUser: req.user._id }).populate('childText');
+      res.json(todolists);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+  
+
+async function saveToDoList(req, res) {
+    const { title, color, ifDone } = req.body;
+    if (!title) {
+        return res.status(400).json({error: 'Please enter content of your task'});
+    }
+    try {
+        const newToDo = await ToDoList.create({ title, color, ifDone, ownerUser: req.user._id});
+        res.status(201).json(newToDo);
+    } catch (error) {
+        res.status(500).json({error: error.message});
+    } 
 }
 
-module.exports.saveToDo = (req, res) => {
-    const { text } = req.body;
 
-    ToDoModel
-        .create({ text })
-        .then((data) =>{ 
-            console.log("Added Successfully...")
-            console.log(data)
-            res.send(data)
-        })
-        .catch((err) => console.log(err));
+async function deleteListWithChildText(req, res) {
+    try {
+      // Find the list to be deleted
+      const list = await ToDoList.findById(req.params.id);
+      if (!list) {
+        console.log('List not found');
+        return;
+      }
+  
+      // Retrieve the childText IDs associated with the list
+      const childTextIds = list.childText;
+  
+      // Delete the list
+      await ToDoList.findByIdAndDelete(req.params.id);
+  
+      // Delete the all the sub tasks that the list has
+      await ToDoText.deleteMany({ _id: { $in: childTextIds } });
+  
+      console.log('To Do List and  all its sub Text deleted successfully');
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+async function updateToDoList(req, res) {
+    try {
+        
+        const reqList = await ToDoList.findByIdAndUpdate({_id: req.params.id}, {...req.body});
+        
+        const newTodoList = await ToDoList.findById(req.params.id);
+        
+        res.status(200).json(newTodoList);
+    } catch (error) {
+        res.status(500).json({error: error.message});
+    }
 }
 
-// Bdika
-module.exports.deleteToDo = (req, res) => {
-    const { _id } = req.body;
-
-    console.log('id ---> ', _id);
-
-    ToDoModel
-        .findByIdAndDelete(_id)
-        .then(() => res.set(201).send("Deleted Successfully..."))
-        .catch((err) => console.log(err));
-}
-
-module.exports.updateToDo = (req, res) => {
-    const { _id, text } = req.body;
-
-    ToDoModel
-        .findByIdAndUpdate(_id, { text })
-        .then(() => res.send("Updated Successfully..."))
-        .catch((err) => console.log(err));
-}
+module.exports = { getToDo, saveToDoList, updateToDoList, deleteListWithChildText }
