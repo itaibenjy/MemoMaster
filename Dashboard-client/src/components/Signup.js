@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
 
 // components
-import LoginInput from "./LoginInput";
-import { MDBSpinner, MDBBtn, MDBCol, MDBRow, MDBContainer} from 'mdb-react-ui-kit';
+import LoginInput from "../components/LoginInput";
+import { MDBSpinner, MDBBtn} from 'mdb-react-ui-kit';
 
 function Signup(){
   const [details, setDetails] = useState({
