@@ -18,6 +18,7 @@ module.exports.saveToDo = (req, res) => {
         .catch((err) => console.log(err));
 }
 
+// Bdika
 module.exports.deleteToDo = (req, res) => {
     const { _id } = req.body;
 
