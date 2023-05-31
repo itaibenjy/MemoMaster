@@ -23,10 +23,9 @@ export function useNotes() {
                     Authorization: `Bearer ${user.token}`
                 }
             });
-
             if (!response.ok) {
                 const data = await response.json();
-                setError(data.message);
+                setError(data.error);
                 setLoading(false);
                 return;
             }
@@ -57,7 +56,7 @@ export function useNotes() {
 
         if (!response.ok) {
             const data = await response.json();
-            setError(data.message);
+            setError(data.error);
             setLoading(false);
             return;
         }
@@ -81,7 +80,7 @@ export function useNotes() {
 
         if (!response.ok) {
             const data = await response.json();
-            setError(data.message);
+            setError(data.error);
             setLoading(false);
             return;
         }
@@ -107,7 +106,8 @@ export function useNotes() {
 
         if (!response.ok) {
             const data = await response.json();
-            setError(data.message);
+            setError(data.message)
+            console.log("new error", data.error)
             setLoading(false);
             return;
          }
@@ -119,6 +119,7 @@ export function useNotes() {
         setNotes(notes.map(nt => nt._id === id ? updatedNote : nt)); // <-- update the state with the newNotes array
         setLoading(false);
     }
+
 
     // Return the state variables and functions to be used in other components
     return {notes, error, loading, addNote, deleteNote, updateNote};
