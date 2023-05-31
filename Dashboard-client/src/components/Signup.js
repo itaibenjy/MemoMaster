@@ -3,7 +3,7 @@ import Error from './Error';
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
 
-// Importing LoginInput component, MDBSpinner and MDBBtn from mdb-react-ui-kit
+// components
 import LoginInput from "../components/LoginInput";
 import { MDBSpinner, MDBBtn} from 'mdb-react-ui-kit';
 
