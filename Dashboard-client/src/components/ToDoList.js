@@ -82,8 +82,9 @@ export default function ToDoList({toDoList, deleteTodoList, updateTodoList}) {
                 ))}
             </MDBContainer>
 
+            
             <MDBContainer className="text-end">
-                {isLoading && <MDBSpinner grow color={color === "dark" ? "light" : color === "light" ? "dark" : color} />}
+                {isLoading && <MDBSpinner size='sm' color={color === "dark" ? "light" : color === "light" ? "dark" : color} />}
                 <MDBTypography onClick={toggleDateFormat} tag='small'> {dateFormat} </MDBTypography>
             </MDBContainer>
             {error && <Error error={error}/>}

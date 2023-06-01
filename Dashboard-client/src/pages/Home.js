@@ -4,6 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext'; // custom hook for aut
 import { useEffect } from 'react'; // used to perform side effects in functional components
 import { useNotes } from '../hooks/useNotes'; // custom hook for notes 
 import { useTodoList } from '../hooks/useToDoList'; // custom hook for todoList 
+import { useElements } from '../hooks/useElements'; // custom hook for elements
 
 // Importing the necessary components from the MDB React UI Kit
 import { MDBContainer, MDBTypography } from 'mdb-react-ui-kit';
@@ -27,6 +28,7 @@ export default function Home() {
   // Using the custom hook to get the notes and addNote function
   const {notes, addNote, deleteNote, updateNote, loading, error} = useNotes()
   const {todoLists, todoListError, todoListLoading, addTodoList, deleteTodoList, updateTodoList} = useTodoList()
+  const {allElements, sortByDate, sortByDateReverse} = useElements([notes, todoLists])
 
   // Using the useEffect hook to redirect to the login page if the user is not logged in
   useEffect(() => {
