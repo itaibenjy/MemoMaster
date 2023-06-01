@@ -26,7 +26,7 @@ export default function Note({note, deleteNote, updateNote}) {
       return (<>
 <NoteModal key={note._id} modalTitle="UpdateNote" modalButton="Update Note" showAddNote={showUpdateNote} setShowAddNote={setShowUpdateNote} toggleShowAddNote={toggleUpdateNote} createUpdateNote={updateNote} note={note}/>
 <ModalDialog title="Delete Note" content={`You are about to delete this note?`} btnLabel="Delete" btnColor="danger" handleClick={()=> {toggleShowModal(); deleteNote(_id);}} showModel={showModal} setShowModal={setShowModal} toggleShow={toggleShowModal}/>  
-    <MDBCol lg='4' md='6' sm='6' xs='12'>
+    <MDBCol lg='4' md='6' sm='12' xs='12'>
         <MDBContainer className={`alert alert-${color}`} role="alert">
             <MDBContainer className="p-0 d-flex">
                 <MDBTypography tag="h4" className="alert-heading"><strong>{title}</strong></MDBTypography>
