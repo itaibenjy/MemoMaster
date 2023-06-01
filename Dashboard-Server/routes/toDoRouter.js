@@ -1,15 +1,21 @@
 const { Router } = require("express");
+const requireAuth = require('../middleware/requireAuth')
 
-const { getToDo, saveToDo, deleteToDo, updateToDo } = require("../controllers/toDoController")
+const { getToDo, saveToDoList,  updateToDoList, deleteListWithChildText } = require("../controllers/toDoController")
 
-const router = Router();
+
+
+const router = Router()
+
+router.use(requireAuth)
 
 router.get("/", getToDo);
 
-router.post("/save", saveToDo);
+router.post("/", (req, res) => saveToDoList(req, res));
 
-router.post("/update", updateToDo);
+router.patch("/:id", (req, res) => updateToDoList(req, res));
 
-router.post("/delete", deleteToDo);
+
+router.delete("/:id", deleteListWithChildText);
 
 module.exports = router;
