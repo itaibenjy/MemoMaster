@@ -30,22 +30,25 @@ export function useTodoList() {
         }
 
         const todoLists = await response.json();
-        setTodoLists(todoLists);
+        await setTodoLists(todoLists);
         setLoading(false);
 
       } catch (error) {
         setTodoListError(error.message);
         setLoading(false);
       }
+
       
     }
 
     getTodoLists();
-  }, [user]);
+    
+  }, []);
 
   async function addTodoList (todo) {
     setTodoListError(null);
     setLoading(true);
+    console.log(todo)
 
     try {
       const response = await fetch('api/todo', {
@@ -56,7 +59,6 @@ export function useTodoList() {
         },
         body: JSON.stringify(todo)
       });
-
       if (!response.ok) {
         const data = await response.json();
         setTodoListError(data.todoListError);
@@ -78,23 +80,29 @@ export function useTodoList() {
     setTodoListError(null);
     setLoading(true);
 
-    const response = await fetch(`api/todo/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${user.token}`
+    try {
+      const response = await fetch(`api/todo/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
+      });
+      console.log(response)
+      if (!response.ok) {
+        const data = await response.json();
+        setTodoListError(data.todoListError);
+        setLoading(false);
+        return;
       }
-    });
 
-    if (!response.ok) {
-      const data = await response.json();
-      setTodoListError(data.todoListError);
+      const newTodos = todoLists.filter(todo => todo._id !== id);
+      setTodoLists(newTodos);
       setLoading(false);
-      return;
+    } catch (error) {
+      setTodoListError(error.message);
+      setLoading(false);
     }
 
-    const newTodos = todoLists.filter(todo => todo._id !== id);
-    setTodoLists(newTodos);
-    setLoading(false);
   }
 
   async function updateTodoList (id, todo) {

@@ -7,7 +7,7 @@ const router = Router()
 
 // router.use(requireAuth)
 
-router.post("/saveText/:id", (req, res) => saveToDoText(req, res)); // :id => id of the to do List its belong
+router.post("/:id", (req, res) => saveToDoText(req, res)); // :id => id of the to do List its belong
 
 router.patch('/:id', (req, res) => updateToDoTextById(req, res)); // :id => id of todoText
 

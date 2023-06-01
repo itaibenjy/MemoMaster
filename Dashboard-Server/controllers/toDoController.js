@@ -15,7 +15,7 @@ async function getToDo(req, res) {
 async function saveToDoList(req, res) {
     const { title, color, ifDone } = req.body;
     if (!title) {
-        return res.status(400).json({error: 'Please enter content of your task'});
+        return res.status(400).json({error: 'Please enter the title of the list'});
     }
     try {
         const newToDo = await ToDoList.create({ title, color, ifDone, ownerUser: req.user._id});
@@ -43,10 +43,10 @@ async function deleteListWithChildText(req, res) {
   
       // Delete the all the sub tasks that the list has
       await ToDoText.deleteMany({ _id: { $in: childTextIds } });
-  
-      console.log('To Do List and  all its sub Text deleted successfully');
+      
+      res.status(200).json({ message: 'List deleted successfully' });
     } catch (error) {
-      console.error(error);
+      res.status(500).json({error: error.message});
     }
   }
 
