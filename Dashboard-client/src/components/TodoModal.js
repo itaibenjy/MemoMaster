@@ -65,8 +65,8 @@ export default function NoteModal({showTodo, setShowTodo, toggleShowTodo, create
                   return <MDBRadio
                   btn
                   btnColor={color} 
-                  id={todo ? color+ todo._id : color} 
-                  name={todo ? "color"+ todo._id : "color"}
+                  id={todo ? color+ todo._id : color + "Todo"} 
+                  name={todo ? "color"+ todo._id : "colorTodo"}
                   wrapperTag='span' 
                   label=' ' 
                   wrapperClass='mx-1' 

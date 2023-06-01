@@ -53,9 +53,9 @@ export default function Home() {
         {notes.map((note, index) => (
           <Note key={index} note={note} deleteNote={deleteNote} updateNote={updateNote}/>
         ))}
-      {["primary", "success", "danger", "warning", "info", "light", "dark"].map((color, index) => (
-        <ToDoList key={index} color={color}/>
-      ))}
+        {todoLists.map((toDoList, index) => (
+          <ToDoList key={index} toDoList={toDoList} deleteTodoList={deleteTodoList} updateTodoList={updateTodoList}/>
+        ))}
       </MDBRow>
     </MDBCard>
     </MDBContainer>

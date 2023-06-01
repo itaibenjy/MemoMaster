@@ -30,6 +30,7 @@ export default function Add({addNote, addTodoList}) {
     }
 
     async function createTodoList(title, color) {
+      console.log(title, color)
       await addTodoList({
           title,
           color

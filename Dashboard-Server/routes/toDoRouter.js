@@ -11,11 +11,11 @@ router.use(requireAuth)
 
 router.get("/", getToDo);
 
-router.post("/saveList", (req, res) => saveToDoList(req, res));
+router.post("/", (req, res) => saveToDoList(req, res));
 
-router.patch("/update/:id", (req, res) => updateToDoList(req, res));
+router.patch("/:id", (req, res) => updateToDoList(req, res));
 
 
-router.delete("/delete/:id", deleteListWithChildText);
+router.delete("/:id", deleteListWithChildText);
 
 module.exports = router;
