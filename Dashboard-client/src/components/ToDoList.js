@@ -67,7 +67,7 @@ export default function ToDoList({toDoList, deleteTodoList, updateTodoList}) {
             <MDBContainer className="d-flex justify-content-center">
                  <MDBInputGroup className='mb-3'>
                     <input type='text' className={`custom-input form-control ${color}`} value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown}/>
-                    <MDBBtn color={color=="dark" ? "light" : color=="light" ? "dark" : color} outline onClick={addItemHandler}><MDBIcon fas icon="plus" /></MDBBtn>
+                    <MDBBtn color={color==="dark" ? "light" : color==="light" ? "dark" : color} outline onClick={addItemHandler}><MDBIcon fas icon="plus" /></MDBBtn>
                 </MDBInputGroup>
             </MDBContainer>
 
@@ -75,8 +75,8 @@ export default function ToDoList({toDoList, deleteTodoList, updateTodoList}) {
 
             <MDBContainer className="">
                 {items.map((item, index) => (
-                    <MDBContainer className="d-flex justify-content-between">
-                    <MDBCheckbox checked={item.ifDone} onClick={() => (changeClicked(item, index))} className={`custom-check-input ${color}`} color={color} key={index} label={item.content} />
+                    <MDBContainer key={index} className="d-flex justify-content-between">
+                    <MDBCheckbox checked={item.ifDone} onChange={() => (changeClicked(item, index))} className={`custom-check-input ${color}`} color={color} key={index} label={item.content} />
                     {item.ifDone && <MDBBtn tag='a' color='none' className="ms-auto"><MDBIcon fas icon='trash-alt' onClick={() => (deleteItem(item))}/></MDBBtn>}
                     </MDBContainer>
                 ))}

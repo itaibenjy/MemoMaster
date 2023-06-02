@@ -220,6 +220,7 @@
 .custom-check-input.dark:checked {
   background-color: var(--mdb-dark);
   border-color: var(--mdb-light);
+  box-shadow: 0 0 0 .1rem var(--mdb-dark);
 }
 
 .custom-check-input.dark:checked:focus {
