@@ -17,23 +17,28 @@ export function useNotes() {
             setError(null);
             setLoading(true);
             // Send the request to the API
-            const response = await fetch('api/note', {
-                method: 'GET',
-                headers: {
-                    Authorization: `Bearer ${user.token}`
+            try {
+                const response = await fetch('api/note', {
+                    method: 'GET',
+                    headers: {
+                        Authorization: `Bearer ${user.token}`
+                    }
+                });
+                if (!response.ok) {
+                    const data = await response.json();
+                    setError(data.error);
+                    setLoading(false);
+                    return;
                 }
-            });
-            if (!response.ok) {
-                const data = await response.json();
-                setError(data.error);
-                setLoading(false);
-                return;
-            }
 
-            // Extract the notes from the response
-            const notes = await response.json();
-            setNotes(notes);
-            setLoading(false);
+                // Extract the notes from the response
+                const notes = await response.json();
+                setNotes(notes);
+                setLoading(false);
+            } catch (error) {
+                setError(error.message);
+                setLoading(false);
+            }
         }
 
         // Call the asynchronous function
