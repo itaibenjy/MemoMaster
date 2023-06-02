@@ -3,10 +3,6 @@ import {MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIco
 import NoteModal from './NoteModal';
 import TodoModal from './TodoModal';
 
-function handleClick(event) {
-    console.log(event.target)
-}
-
 export default function Add({addNote, addTodoList}) {
 
 
@@ -30,7 +26,6 @@ export default function Add({addNote, addTodoList}) {
     }
 
     async function createTodoList(title, color) {
-      console.log(title, color)
       await addTodoList({
           title,
           color

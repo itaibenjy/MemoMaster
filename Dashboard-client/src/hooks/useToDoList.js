@@ -48,7 +48,6 @@ export function useTodoList() {
   async function addTodoList (todo) {
     setTodoListError(null);
     setLoading(true);
-    console.log(todo)
 
     try {
       const response = await fetch('api/todo', {
@@ -87,7 +86,6 @@ export function useTodoList() {
           Authorization: `Bearer ${user.token}`
         }
       });
-      console.log(response)
       if (!response.ok) {
         const data = await response.json();
         setTodoListError(data.todoListError);
