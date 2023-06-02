@@ -12,13 +12,9 @@ export function useElements(notes, todoLists){
         const newNote = notes.map((note) => (  {type: 'note', ...note}  ))
         const newTodo = todoLists.map((todo) => ( {type: 'todo', ...todo}  ))
         let all = [...newNote, ...newTodo];
-        console.log(all);
         all =  filterByColor(all);
-        console.log("Color", colors, all);
         all = filterByType(all);
-        console.log("Types", types, all);
         all = sortByDate(all, reversed);
-        console.log(all);
         setElements(all);
     }, [notes, todoLists, reversed, colors, types])
 

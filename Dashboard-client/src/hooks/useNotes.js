@@ -112,15 +112,12 @@ export function useNotes() {
         if (!response.ok) {
             const data = await response.json();
             setError(data.message)
-            console.log("new error", data.error)
             setLoading(false);
             return;
          }
 
         const updatedNote = await response.json();
         // Update the note in the state
-        console.log(updatedNote);
-
         setNotes(notes.map(nt => nt._id === id ? updatedNote : nt)); // <-- update the state with the newNotes array
         setLoading(false);
     }
