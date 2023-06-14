@@ -19,11 +19,16 @@ function ThemeProvider({ children }) {
 
 
   useEffect(() => {
-    const savedTheme = document.cookie.split('; ').find(row => row.startsWith('theme=')).split('=')[1];
-    console.log(savedTheme)
-    if (savedTheme) {
-      setTheme(savedTheme);
+    try{
+      const savedTheme = document.cookie.split('; ').find(row => row.startsWith('theme=')).split('=')[1];
+      console.log(savedTheme)
+      if (savedTheme) {
+        setTheme(savedTheme);
+      }
+    } catch (err) {
+      console.log(err)
     }
+    
   }, []);
 
   function updateTheme(th) {
