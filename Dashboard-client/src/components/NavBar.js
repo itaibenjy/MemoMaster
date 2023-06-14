@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLogout } from "../hooks/useLogout"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { MDBNavbar, MDBContainer, MDBNavbarBrand, MDBBtn, MDBIcon, MDBSwitch} from 'mdb-react-ui-kit';
@@ -8,7 +8,7 @@ function NavBar(){
 
   const { logout } = useLogout()
   const { user } = useAuthContext()
-  const { setTheme } = useThemeContext()
+  const { updateTheme, theme } = useThemeContext()
   
   const [switchValue, setSwitchValue] = useState(false);
 
@@ -16,12 +16,18 @@ function NavBar(){
     logout()
   }
 
+  useEffect(() => {
+    if (theme === 'dark') {
+      setSwitchValue(true)
+    }
+  },[theme])
+
   function handleSwitch(event) {
     setSwitchValue(event.target.checked)
     if (switchValue) {
-      setTheme('light')
+      updateTheme('light')
     } else {
-      setTheme('dark')
+      updateTheme('dark')
     }
   }
 
