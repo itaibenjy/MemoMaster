@@ -3,6 +3,7 @@ import { useLogout } from "../hooks/useLogout"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { MDBNavbar, MDBContainer, MDBNavbarBrand, MDBBtn, MDBIcon, MDBSwitch} from 'mdb-react-ui-kit';
 import {useThemeContext} from "../hooks/useThemeContext";
+import Logo from '../assets/images/NavBarLogo.png'
 
 function NavBar(){
 
@@ -34,10 +35,12 @@ function NavBar(){
  return (
     <MDBNavbar sticky className="m-0">
       <MDBContainer fluid className="flex-nowrap">
-        <MDBNavbarBrand><i className="far fa-calendar-check fa-xl"></i></MDBNavbarBrand>
+        <MDBNavbarBrand tag="div" className="my-0 py-0">
+          <img src={Logo} alt="Logo" height="40" loading="lazy" />
+        </MDBNavbarBrand>
         <MDBContainer className='d-flex align-items-center justify-content-end m-0'>
           {user && 
-          <MDBBtn rounded size="sm" className="mx-2" onClick={handleClick}>Logout</MDBBtn>}
+          <MDBBtn rounded size="sm" className="mx-2" onClick={handleClick}><MDBIcon icon="sign-out-alt" className="me-1" />Logout</MDBBtn>}
           <MDBIcon fas icon="sun" className="mx-2" /><MDBSwitch checked={switchValue} onChange={handleSwitch} /><MDBIcon fas icon="moon" />
         </MDBContainer>
       </MDBContainer>

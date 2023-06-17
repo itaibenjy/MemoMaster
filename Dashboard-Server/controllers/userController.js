@@ -35,13 +35,14 @@ async function signupUser(req, res){
         const user = await User.signup(username, password, firstName, lastName, email);
 
         // create a token
-        const token = createToken(user._id);a
+        const token = createToken(user._id);
 
         const name = user.firstName + " " + user.lastName;
 
         res.status(201).json({ username, token, name });
 
     } catch(err){
+        console.log(err)
         res.status(400).json({ error: err.message });
     }
 }
