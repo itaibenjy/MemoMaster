@@ -42,9 +42,7 @@ export default function Home() {
   return (<>
     {(loading || todoListLoading) && <Loading/>}
     <MDBContainer className='p-1'>
-    <MDBContainer fluid className="d-flex justify-content-center align-items-center mt-4">
-      <MDBTypography tag='h1'  style={{fontFamily: 'Monomania'}} className='display-1'>  Welcome {user?.name}! </MDBTypography>
-    </MDBContainer>
+    <MDBTypography tag='h1' style={{fontFamily: 'Monomania'}} className='display-1 text-center'>  Welcome {user?.name}! </MDBTypography>
     <MDBContainer fluid className="d-flex justify-content-center align-items-center">
       <Watch />
     </MDBContainer>
@@ -77,14 +75,3 @@ export default function Home() {
     </>
   )
 }
-
-/*----------------------------------------------------------------
-
-        {notes.map((note, index) => (
-          <Note key={index} note={note} deleteNote={deleteNote} updateNote={updateNote}/>
-        ))}
-        {todoLists.map((toDoList, index) => (
-          <ToDoList key={index} toDoList={toDoList} deleteTodoList={deleteTodoList} updateTodoList={updateTodoList}/>
-        ))}
-
-*/
