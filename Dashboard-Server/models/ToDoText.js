@@ -13,6 +13,10 @@ const todoTextSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    dateTime:    {
+        type: Date,
+        required: false,
+    },
     ownerList: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,

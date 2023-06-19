@@ -32,7 +32,7 @@ export default function NoteModal({showTodo, setShowTodo, toggleShowTodo, create
       }
     })
   }
-  
+
   // Function to create a new todo
   function createUpdateNewTodo() {
     if (todo) {

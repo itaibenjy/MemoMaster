@@ -5,6 +5,7 @@ import { MDBInputGroup, MDBCheckbox } from "mdb-react-ui-kit";
 import { useDate } from "../hooks/useDate";
 import TodoModal from "./TodoModal";
 import ModalDialog from "./ModalDialog";
+import SelectDateTime from "./SelectDateTime";
 import useTodoItem from "../hooks/useTodoItem";
 import Error from "./Error";
 
@@ -24,6 +25,8 @@ export default function ToDoList({toDoList, deleteTodoList, updateTodoList}) {
     const [input, setInput] = useState('');
 
     const {dateFormat, toggleDateFormat} = useDate(createdAt);
+    const [showDateTime, setShowDateTime] = useState(false);
+    const [selected, setSelected] = useState(null);
 
     function toggleShowModal() {
         setShowModal(!showModal);
@@ -52,7 +55,6 @@ export default function ToDoList({toDoList, deleteTodoList, updateTodoList}) {
     }
     
       return (<>
-
 <TodoModal key={toDoList._id} modalTitle="Update Todo List" modalButton="Update List" showTodo={showUpdateTodo} setShowTodo={setShowUpdateTodo} toggleShowTodo={toggleUpdateTodo} createUpdateTodo={updateTodoList} todo={toDoList}/>
 <ModalDialog title="Delete Todo" content={`You are about to delete this entire Todo List?`} btnLabel="Delete" btnColor="danger" handleClick={()=> {toggleShowModal(); deleteTodoList(_id);}} showModel={showModal} setShowModal={setShowModal} toggleShow={toggleShowModal}/>  
     <MDBCol lg='4' md='6' sm='12' xs='12'>
@@ -75,9 +77,10 @@ export default function ToDoList({toDoList, deleteTodoList, updateTodoList}) {
 
             <MDBContainer className="">
                 {items.map((item, index) => (
-                    <MDBContainer key={index} className="d-flex justify-content-between">
+                    <MDBContainer key={index} className="d-flex p-0">
+                    {item.ifDone ? <MDBBtn tag='a' color='none' className="me-1"><MDBIcon fas icon='trash-alt' onClick={() => (deleteItem(item))}/></MDBBtn> : <div style={{width:"18px"}}/>}
                     <MDBCheckbox checked={item.ifDone} onChange={() => (changeClicked(item, index))} className={`custom-check-input ${color}`} color={color} key={index} label={item.content} />
-                    {item.ifDone && <MDBBtn tag='a' color='none' className="ms-auto"><MDBIcon fas icon='trash-alt' onClick={() => (deleteItem(item))}/></MDBBtn>}
+                    <SelectDateTime className="ms-auto" item={item} index={index} setItems={setItems} updateItem={updateItem}/>
                     </MDBContainer>
                 ))}
             </MDBContainer>

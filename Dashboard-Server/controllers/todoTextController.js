@@ -33,8 +33,10 @@ async function saveToDoText(req, res) {
 
 async function updateToDoTextById(req, res) {
     try {
+        console.log(req.body);
         const oldText = await ToDoText.findByIdAndUpdate({_id: req.params.id}, {...req.body});
         const newToDoText = await ToDoText.findById(req.params.id);
+        console.log(newToDoText);
         res.status(200).json(newToDoText);
     } catch (error) {
         res.status(500).json({error: error.message});
