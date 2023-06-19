@@ -62,7 +62,7 @@ export default function SelectDateTime({ item, index, setItems, updateItem }) {
         <div className="text-center ms-auto">
             <MDBDropdown>
                 <MDBTooltip tag="a" title={timeAgo ? <> {timeAgo} <br></br> {dateView} </> : "No Time Set!"}>
-                    <MDBDropdownToggle tag='div' color='none'><MDBIcon fas icon={hasPassed ? 'calendar-times' : 'calendar'} /></MDBDropdownToggle>
+                    <MDBDropdownToggle tag='div' color='none'><MDBIcon fas icon={hasPassed ? 'calendar-times' : item.dateTime ? 'calendar-check' : 'calendar'} /></MDBDropdownToggle>
                 </MDBTooltip>
                 <MDBDropdownMenu className='p-2'>
                     <div onMouseDown={(e) => e.stopPropagation()}>
