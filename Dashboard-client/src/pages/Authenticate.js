@@ -52,19 +52,19 @@ export default function Authenticate() {
   //style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 80px)' }}
   return (<>
   <MDBContainer className='containter col-xxxl-8 px-4 py-1' style={{marginTop: "10%", marginBottom: "10%"}}>
-      <MDBContainer class="row align-items-center g-lg-5 p-5">
-        <MDBContainer class="col-lg-7 text-center text-lg-start">
+      <MDBContainer className="row align-items-center g-lg-5 p-5">
+        <MDBContainer className="col-lg-7 text-center text-lg-start">
           { theme === 'light' ?
           <img src={LogoLight} alt="Logo" width="80%" loading="lazy" />
           :
           <img src={LogoDark} alt="Logo" width="80%" loading="lazy" />
           }
           <MDBTypography tag='h6' style={{fontFamily: 'Monomania'}} variant='h6' className="my-2 display-6">Master Your Tasks, Manage Your Memories! </MDBTypography>
-          <MDBTypography class="col-lg-10 fs-4">
+          <MDBTypography className="col-lg-10 fs-4">
             Welcome to MemoMaster - your hub for notes and tasks. Seamlessly organize your thoughts and manage to-do lists in one intuitive platform. Embrace enhanced productivity and transform your everyday routine. Dive into the MemoMaster experience today!
           </MDBTypography>
         </MDBContainer>
-        <MDBContainer class="col-md-10 mx-auto col-lg-5">
+        <MDBContainer className="col-md-10 mx-auto col-lg-5">
           <MDBCard className='p-4' shadow="5" style={{borderRadius:"15px"}}>
               <MDBTabs fill className='m-3'>
                   <MDBTabsItem>
