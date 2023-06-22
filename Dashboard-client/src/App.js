@@ -15,9 +15,8 @@ window.fetch =async function (resource, init) {
   const response = await originalFetch.apply(this, arguments);
   console.log(response.status)
   if (response.status === 401 ) {
-    console.log(await response.json())
     localStorage.removeItem("user")
-    //window.location.href = "/";
+    window.location.href = "/";
   }
 
   return response;

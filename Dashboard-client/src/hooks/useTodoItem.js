@@ -40,7 +40,6 @@ export default function useTodoItem (initialItems, todoId) {
     function deleteItem(item){
         setIsLoading(true);
         setError(null);
-        console.log(user.token)
 
         fetch(`api/todoText/${item._id}`, {
             method: 'DELETE',
