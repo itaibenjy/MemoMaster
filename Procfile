@@ -1,1 +1,1 @@
-web: ./Dashboard-Server node app.js
+web: npm start

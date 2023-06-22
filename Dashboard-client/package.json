@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "https://memo-master-server-7c0b3fe9dbce.herokuapp.com/:5000",
   "eslintConfig": {
     "extends": [
       "react-app",
