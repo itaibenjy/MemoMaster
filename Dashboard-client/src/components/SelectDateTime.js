@@ -52,7 +52,7 @@ export default function SelectDateTime({ item, index, setItems, updateItem }) {
 
 
     function checkIfTimePassed() {
-        if (item.dateTime) {
+        if (itemRef.current.dateTime) {
             setHasPassed(new Date(itemRef.current.dateTime).getTime() < new Date().getTime());
         }
     }
