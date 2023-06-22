@@ -19,6 +19,8 @@ function Signup(){
     lastName: "",
     email: "",
   })
+  const [showModel, setShowModal] = useState(false);
+  const toggleShow = () => { setShowModal(prev => !prev)}
 
   // Destructuring the signup, error, and isLoading variables from the useSignup hook
   const {signup, error, isLoading} = useSignup()
@@ -40,15 +42,16 @@ function Signup(){
         [name]: value
       }
     })
+    event.preventDefault();
   }
 
   // Defining the labels, names, and types arrays to be used in the LoginInput components
   const labels = ["Username", "Password", "Confirm Password", "First Name", "Last Name", "Email"]
   const names = ["username", "password", "confirmPassword", "firstName", "lastName", "email"]
   const types = ["text", "password", "password", "text", "text", "email" ]
-
+//{title, content, btnLabel, btnColor, handleClick, showModel, setShowModal, toggleShow}
   // Returning the Signup component with a form that includes LoginInput components for each input field, an error component if there is an error, and a submit button that is disabled while isLoading is true
-  return (
+  return (<>
     <form onSubmit={handleSubmit} className="text-center">
       <h3 className="my-3">Sign Up</h3>
       {labels.map((label, index) => {
@@ -72,7 +75,7 @@ function Signup(){
         <MDBBtn type='submit' size='lg' className='my-2'>Sign Up</MDBBtn>
         }
     </form>
-  )
+  </>)
 }
 
 // Exporting the Signup component as the default export
