@@ -1,6 +1,6 @@
 // date fns
 import { formatDistanceToNow } from 'date-fns';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 
 export function useDate(dateVar) {
@@ -12,6 +12,14 @@ export function useDate(dateVar) {
     // format date to be more readable
     const date = new Date(dateVar).toLocaleString("en-UK", {dateStyle: "medium", timeStyle: "short", hour12: false});
     const [dateFormat, setDateFormat] = useState(timeAgo);
+    const timeAgoRef = useRef(timeAgo);
+    const isTimeAgoRef = useRef(isTimeAgo);
+
+    useEffect(() => {
+        timeAgoRef.current = timeAgo;
+        isTimeAgoRef.current = isTimeAgo;
+    }, [timeAgo, isTimeAgo])
+
 
     // use effect to update time ago every second to keep it up to date
     useEffect(() => {
@@ -24,6 +32,9 @@ export function useDate(dateVar) {
 
     function updateTimeAgo() {
         setTimeAgo(formatDistanceToNow(new Date(dateVar), {addSuffix: true, includeSeconds: true,}));
+        if(isTimeAgoRef.current) {
+            setDateFormat(timeAgoRef.current);
+        }
     }
 
     // toggle between time ago and date format
