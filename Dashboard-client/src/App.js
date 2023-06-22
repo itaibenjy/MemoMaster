@@ -13,9 +13,11 @@ window.fetch =async function (resource, init) {
   const serverUrl = "https://memo-master-server-7c0b3fe9dbce.herokuapp.com/";
   arguments[0] = `${serverUrl}${resource}`;
   const response = await originalFetch.apply(this, arguments);
+  console.log(response.status)
   if (response.status === 401 ) {
+    console.log(await response.json())
     localStorage.removeItem("user")
-    window.location.href = "/";
+    //window.location.href = "/";
   }
 
   return response;

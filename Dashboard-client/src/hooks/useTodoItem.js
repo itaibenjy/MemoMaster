@@ -17,9 +17,9 @@ export default function useTodoItem (initialItems, todoId) {
             method: 'POST',
             body: JSON.stringify(item),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${user.token}`
             },
-            Authorization: `Bearer ${user.token}`
         })
         .then(res => {
             if(!res.ok) {
@@ -40,10 +40,13 @@ export default function useTodoItem (initialItems, todoId) {
     function deleteItem(item){
         setIsLoading(true);
         setError(null);
+        console.log(user.token)
 
         fetch(`api/todoText/${item._id}`, {
             method: 'DELETE',
-            Authorization: `Bearer ${user.token}`
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            }
         })
         .then(res => {
             if(!res.ok) {
@@ -69,9 +72,9 @@ export default function useTodoItem (initialItems, todoId) {
             method: 'PATCH',
             body: JSON.stringify(item),
             headers: {
-                'Content-Type': 'application/json'
-            },
-            Authorization: `Bearer ${user.token}`
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${user.token}`
+            }
         })
         .then(res => {
             if(!res.ok) {
