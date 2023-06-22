@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLogout } from "../hooks/useLogout"
 import { useAuthContext } from "../hooks/useAuthContext"
-import { MDBNavbar, MDBContainer, MDBNavbarItem, MDBNavbarBrand, MDBCollapse, MDBNavbarToggler, MDBNavbarNav, MDBBtn, MDBIcon, MDBSwitch} from 'mdb-react-ui-kit';
+import { MDBNavbar, MDBContainer, MDBNavbarItem, MDBNavbarBrand, MDBCollapse, MDBNavbarToggler, MDBNavbarNav, MDBBtn, MDBIcon, MDBSwitch, MDBTooltip} from 'mdb-react-ui-kit';
 import {useThemeContext} from "../hooks/useThemeContext";
 import LogoLight from '../assets/images/NavBarLogoLight.png'
 import LogoDark from '../assets/images/NavBarLogoDark.png'
@@ -73,7 +73,9 @@ function NavBar(){
           <MDBNavbarItem className=''>
             <MDBContainer className='d-flex align-items-center justify-content-start mt-2 p-0'>
               <MDBIcon fas icon="sun" className="mx-2" />
-              <MDBSwitch checked={switchValue} onChange={handleSwitch} />
+              <MDBTooltip title={theme === "light" ? "Dark Mode" : "Light Mode"} tag='span'>
+                <MDBSwitch checked={switchValue} onChange={handleSwitch} />
+              </MDBTooltip>
               <MDBIcon fas icon="moon" />
             </MDBContainer>
           </MDBNavbarItem>

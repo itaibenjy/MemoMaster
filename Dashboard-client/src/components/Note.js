@@ -1,4 +1,4 @@
-import { MDBCol, MDBContainer, MDBTypography, MDBBtn, MDBIcon } from "mdb-react-ui-kit";
+import { MDBCol, MDBContainer, MDBTypography, MDBBtn, MDBIcon, MDBTooltip } from "mdb-react-ui-kit";
 import ModalDialog from "./ModalDialog";
 import NoteModal from "./NoteModal";
 import { useState } from "react";
@@ -13,7 +13,7 @@ export default function Note({note, deleteNote, updateNote}) {
     const [showModal, setShowModal] = useState(false);
     const [showUpdateNote, setShowUpdateNote] = useState(false);
 
-    const {dateFormat, toggleDateFormat} = useDate(createdAt);
+    const {dateFormat, toggleDateFormat,  date, timeAgo} = useDate(createdAt);
 
     function toggleShowModal() {
         setShowModal(!showModal);
@@ -31,8 +31,12 @@ export default function Note({note, deleteNote, updateNote}) {
             <MDBContainer className="p-0 d-flex">
                 <MDBTypography tag="h4" className="alert-heading"><strong>{title}</strong></MDBTypography>
                 <span className="ms-auto mb-1" aria-hidden="true">
-                <MDBBtn tag='a' color='none' className="mx-3"><MDBIcon fas icon='pencil-alt' onClick={toggleUpdateNote}/></MDBBtn>
+                <MDBTooltip tag="span" title={"Edit Note"}>
+                    <MDBBtn tag='a' color='none' className="mx-3"><MDBIcon fas icon='pencil-alt' onClick={toggleUpdateNote}/></MDBBtn>
+                </MDBTooltip>
+                <MDBTooltip tag="span" title={"Delete Note"}>
                     <MDBBtn tag='a' color='none'><MDBIcon fas icon='trash-alt' onClick={toggleShowModal}/></MDBBtn>
+                </MDBTooltip>
                 </span>
             </MDBContainer>
             <MDBTypography>
@@ -42,7 +46,9 @@ export default function Note({note, deleteNote, updateNote}) {
                 ))}
                 </MDBTypography>
             <MDBContainer className="text-end">
-                <MDBTypography onClick={toggleDateFormat} tag='small'> {dateFormat} </MDBTypography>
+                <MDBTooltip placement='bottom' tag="span" title={<> {timeAgo} <br></br> {date} </>}>
+                    <MDBTypography onClick={toggleDateFormat} tag='small'> {dateFormat} </MDBTypography>
+                </MDBTooltip>
             </MDBContainer>
         </MDBContainer>
     </MDBCol>

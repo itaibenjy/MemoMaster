@@ -1,5 +1,5 @@
 
-import { MDBCol, MDBContainer, MDBTypography, MDBBtn, MDBIcon, MDBSpinner } from "mdb-react-ui-kit";
+import { MDBCol, MDBContainer, MDBTypography, MDBBtn, MDBIcon, MDBSpinner, MDBTooltip } from "mdb-react-ui-kit";
 import { useState } from "react";
 import { MDBInputGroup, MDBCheckbox } from "mdb-react-ui-kit";
 import { useDate } from "../hooks/useDate";
@@ -24,7 +24,7 @@ export default function ToDoList({toDoList, deleteTodoList, updateTodoList}) {
 
     const [input, setInput] = useState('');
 
-    const {dateFormat, toggleDateFormat} = useDate(createdAt);
+    const {dateFormat, toggleDateFormat, timeAgo, date} = useDate(createdAt);
     const [showDateTime, setShowDateTime] = useState(false);
     const [selected, setSelected] = useState(null);
 
@@ -62,8 +62,12 @@ export default function ToDoList({toDoList, deleteTodoList, updateTodoList}) {
             <MDBContainer className="p-0 d-flex text-center">
                 <MDBTypography tag="h4" className="ms-auto alert-heading text-center"><strong>{title}</strong></MDBTypography>
                 <span className="ms-auto mb-1" aria-hidden="true">
+                <MDBTooltip tag="span" title={"Edit To Do"}>
                     <MDBBtn tag='a' color='none' className="ms-2"><MDBIcon fas icon='pencil-alt' onClick={toggleUpdateTodo}/></MDBBtn>
+                </MDBTooltip>
+                <MDBTooltip tag="span" title={"Delete To Do"}>
                     <MDBBtn tag='a' color='none'className="ms-3"><MDBIcon fas icon='trash-alt' onClick={toggleShowModal}/></MDBBtn>
+                </MDBTooltip>
                 </span>
             </MDBContainer>
             <MDBContainer className="d-flex justify-content-center">
@@ -88,7 +92,9 @@ export default function ToDoList({toDoList, deleteTodoList, updateTodoList}) {
             
             <MDBContainer className="text-end">
                 {isLoading && <MDBSpinner size='sm' color={color === "dark" ? "light" : color === "light" ? "dark" : color} />}
-                <MDBTypography onClick={toggleDateFormat} tag='small'> {dateFormat} </MDBTypography>
+                <MDBTooltip placement='bottom' tag="span" title={<> {timeAgo} <br></br> {date} </>}>
+                    <MDBTypography onClick={toggleDateFormat} tag='small'> {dateFormat} </MDBTypography>
+                </MDBTooltip>
             </MDBContainer>
             {error && <Error error={error}/>}
         </MDBContainer>

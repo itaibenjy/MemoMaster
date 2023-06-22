@@ -7,7 +7,7 @@ import { useTodoList } from '../hooks/useToDoList'; // custom hook for todoList
 import { useElements } from '../hooks/useElements'; // custom hook for elements
 
 // Importing the necessary components from the MDB React UI Kit
-import { MDBContainer, MDBTypography } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBTypography, MDBBtn, MDBIcon } from 'mdb-react-ui-kit';
 import { MDBCard, MDBRow} from 'mdb-react-ui-kit';
 
 // Importing the necessary components from the components folder
@@ -19,6 +19,7 @@ import Error from '../components/Error';
 import Loading from '../components/Loading';
 import Filter from '../components/Filter';
 import Sort from '../components/Sort';
+import NoElements from '../components/NoElements';
 
 // Exporting the Home component as the default export
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
   const {notes, addNote, deleteNote, updateNote, loading, error} = useNotes()
   const {todoLists, todoListError, todoListLoading, addTodoList, deleteTodoList, updateTodoList} = useTodoList()
   const {allElements, reversed, setReversed, colors, types, addType, removeType, addColor, removeColor} = useElements(notes, todoLists)
+  const colorsVar = ['primary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
 
   // Using the useEffect hook to redirect to the login page if the user is not logged in
   useEffect(() => {
@@ -58,6 +60,7 @@ export default function Home() {
     {(error || todoListError) && <Error error={error ? error : todoListError}/>}
     <MDBCard style={{ height: '100%', minHeight: '60vh' }} className="p-2">
       <MDBRow className="">
+        {allElements.length === 0 && !loading && <NoElements {...{colors, types, removeColor, removeType}}/>}
         {allElements.map((element, index) => {
           if(element.type === 'note') {
             return (
