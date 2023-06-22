@@ -17,12 +17,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://memo-master-server-7c0b3fe9dbce.herokuapp.com/:5000",
+  "proxy": "http://memo-master-server-7c0b3fe9dbce.herokuapp.com",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -40,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
