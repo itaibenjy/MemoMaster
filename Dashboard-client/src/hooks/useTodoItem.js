@@ -13,7 +13,7 @@ export default function useTodoItem (initialItems, todoId) {
         setIsLoading(true);
         setError(null);
 
-        fetch(`/api/todoText/${todoId}`, {
+        fetch(`api/todoText/${todoId}`, {
             method: 'POST',
             body: JSON.stringify(item),
             headers: {
@@ -41,7 +41,7 @@ export default function useTodoItem (initialItems, todoId) {
         setIsLoading(true);
         setError(null);
 
-        fetch(`/api/todoText/${item._id}`, {
+        fetch(`api/todoText/${item._id}`, {
             method: 'DELETE',
             Authorization: `Bearer ${user.token}`
         })
@@ -65,7 +65,7 @@ export default function useTodoItem (initialItems, todoId) {
         setIsLoading(true);
         setError(null);
 
-        fetch(`/api/todoText/${item._id}`, {
+        fetch(`api/todoText/${item._id}`, {
             method: 'PATCH',
             body: JSON.stringify(item),
             headers: {
