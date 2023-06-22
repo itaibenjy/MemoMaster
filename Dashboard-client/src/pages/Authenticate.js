@@ -26,11 +26,14 @@ import LogoDark from '../assets/images/NavBarLogoDark.png'
 export default function Authenticate() {
   // Setting up state for active tab
   const [fillActive, setFillActive] = useState('tab1');
+  const [showModal, setShowModal] = useState(false);
 
   // Getting user and navigate function from useAuthContext and react-router-dom respectively
   const {user} = useAuthContext()
   const {theme} = useThemeContext()
   const navigate = useNavigate()
+
+
 
   // Redirecting to home page if user is already logged in
   useEffect(() => {
