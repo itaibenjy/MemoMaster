@@ -6,7 +6,7 @@ export function useSignup(){
     const [isLoading, setIsLoading] = useState(null)
     const { dispatch } = useAuthContext()
 
-    async function signup(details) {
+    async function signup(details, setShowModal, setLogin) {
         setError(null)
 
         // check if the passwords match
@@ -28,10 +28,12 @@ export function useSignup(){
         setIsLoading(false)
 
         if (!response.ok) {
+            console.log(response)
             setError(data.error)
         } 
 
         if (response.ok) {
+
             // save the user to local storage
             localStorage.setItem("user", JSON.stringify(data))
 
