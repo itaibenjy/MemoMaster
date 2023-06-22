@@ -1,7 +1,7 @@
-
+// Importing necessary components from the mdb-react-ui-kit library
 import { MDBDropdown, MDBDropdownMenu, MDBCheckbox, MDBDropdownToggle, MDBDropdownItem, MDBBtn} from 'mdb-react-ui-kit';
 
-
+// The Filter component renders a dropdown menu for applying filters based on colors and types
 export default function Filter({colors, addColor, removeColor, types, addType ,removeType}) {
     const colorsVar = ['primary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
     const colorsLabels = ['Blue', 'Green', 'Red', 'Yellow', 'Cyan', 'White', 'Black'];

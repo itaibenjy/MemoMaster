@@ -1,8 +1,9 @@
 // date fns
 import { formatDistanceToNow } from 'date-fns';
+// Importing useState and useEffect hooks from React
 import { useState, useEffect } from 'react';
 
-
+// React hook that manages date formatting
 export function useDate(dateVar) {
 
     // setting state for time ago and isTimeAgo

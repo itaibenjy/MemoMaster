@@ -1,6 +1,9 @@
+// Importing useState hook from React
 import { useState } from 'react';
+// Importing useAuthContext hook from useAuthContext
 import { useAuthContext } from '../hooks/useAuthContext';
 
+// Custom hook for user login functionality
 export function useLogin(){
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null)

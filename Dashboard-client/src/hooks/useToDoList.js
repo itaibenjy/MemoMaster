@@ -1,6 +1,9 @@
+// Import the useState and useEffect hooks from React
 import { useState, useEffect } from 'react';
+// Importing useAuthContext hook from useAuthContext
 import { useAuthContext } from './useAuthContext';
 
+// Custom hook for managing todo items
 export function useTodoList() {
   const [todoLists, setTodoLists] = useState([]);
   const [todoListError, setTodoListError] = useState(null);
@@ -9,6 +12,7 @@ export function useTodoList() {
   const { user } = useAuthContext();
 
   useEffect(() => {
+    // Function to get all to do
     async function getTodoLists() {
       if (!user) return;
       setTodoListError(null);
@@ -45,6 +49,7 @@ export function useTodoList() {
     
   }, []);
 
+  // Function to add new to do list
   async function addTodoList (todo) {
     setTodoListError(null);
     setLoading(true);
@@ -75,6 +80,7 @@ export function useTodoList() {
     }
   }
 
+  // Function to delete to do
   async function deleteTodoList (id) {
     setTodoListError(null);
     setLoading(true);
@@ -103,6 +109,7 @@ export function useTodoList() {
 
   }
 
+  // Function to update to do
   async function updateTodoList (id, todo) {
     setTodoListError(null);
     setLoading(true);

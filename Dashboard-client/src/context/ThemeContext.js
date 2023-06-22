@@ -1,10 +1,12 @@
 import React, { useState, useEffect, createContext } from 'react';
 
+// Create the theme context
 const ThemeContext = createContext();
 
+// Theme provider component
 function ThemeProvider({ children }) {
   const [theme, setTheme] = useState('light');
-
+  // Update the theme stylesheet when the theme value changes
   useEffect(() => {
     var linkElement = document.getElementById('mdb-stylesheet');
 
@@ -31,6 +33,7 @@ function ThemeProvider({ children }) {
     
   }, []);
 
+  // Update the theme value and save it in cookies
   function updateTheme(th) {
     setTheme(th);
     document.cookie = `theme=${th}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;

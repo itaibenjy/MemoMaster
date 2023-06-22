@@ -1,22 +1,28 @@
+// Importing necessary components from the mdb-react-ui-kit library and the useState hook from React
 import { useState } from 'react';
 import {MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon, MDBContainer} from 'mdb-react-ui-kit';
+// Importing the NoteModal and TodoModal components from their respective files
 import NoteModal from './NoteModal';
 import TodoModal from './TodoModal';
 
+// The Add component provides a user interface for adding new notes and todo lists
 export default function Add({addNote, addTodoList}) {
 
 
     const [showAddNote, setShowAddNote] = useState(false)
     const [showAddTodoList, setShowAddTodoList] = useState(false)
 
+    // Toggles the visibility of the note 
     function toggleAddNote() {
         setShowAddNote(!showAddNote)
     }
 
+    // Toggles the visibility of the todo 
     function toggleAddTodoList() {
       setShowAddTodoList(!showAddTodoList)
     }
 
+    // Create new note
     async function createNote(title, content , color) {
         await addNote({
             title,
@@ -25,6 +31,7 @@ export default function Add({addNote, addTodoList}) {
         })
     }
 
+    // Create new to do
     async function createTodoList(title, color) {
       await addTodoList({
           title,

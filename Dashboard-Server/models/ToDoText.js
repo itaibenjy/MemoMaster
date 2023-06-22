@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// The sub To Do schema
 const todoTextSchema = new mongoose.Schema({
     content: {
         type: String,

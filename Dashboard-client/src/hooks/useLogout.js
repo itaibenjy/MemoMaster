@@ -1,6 +1,7 @@
+// Importing useAuthContext hook from useAuthContext
 import { useAuthContext } from "./useAuthContext"
 
-
+// Custom hook for user log out functionality
 export function useLogout() {
 
     const { dispatch } = useAuthContext()

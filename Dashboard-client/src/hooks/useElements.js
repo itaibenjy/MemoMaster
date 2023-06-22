@@ -1,5 +1,7 @@
+// Importing useState and useEffect hooks from React
 import { useEffect, useState } from "react";
 
+// Manage and filter a list of elements
 export function useElements(notes, todoLists){
 
 
@@ -18,7 +20,7 @@ export function useElements(notes, todoLists){
         setElements(all);
     }, [notes, todoLists, reversed, colors, types])
 
-
+    // Function to sort the elements by date
     function sortByDate(elems, reversed){
         let sorted;
         if (reversed){
@@ -33,6 +35,7 @@ export function useElements(notes, todoLists){
         return sorted
     }
 
+    // Function to filter the elements by color
     function filterByColor(elems){
         if (colors.size === 0){
             return elems;
@@ -43,6 +46,7 @@ export function useElements(notes, todoLists){
         return filtered;
     }
 
+    // Function to filter the elements by type
     function filterByType(elems){
         if (types.size === 0){
             return elems;

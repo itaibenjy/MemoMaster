@@ -1,6 +1,9 @@
+// Import the useState hook from React
 import {useState} from 'react';
+// Importing useAuthContext hook from useAuthContext
 import { useAuthContext } from './useAuthContext';
 
+// Custom hook for managing todo items
 export default function useTodoItem (initialItems, todoId) {
     const [items, setItems] = useState(initialItems);
 
@@ -8,7 +11,7 @@ export default function useTodoItem (initialItems, todoId) {
     const [error, setError] = useState(null);
     const {user}  = useAuthContext();
 
-
+    // Function to add a new item
     function addItem(item) {
         setIsLoading(true);
         setError(null);
@@ -37,6 +40,7 @@ export default function useTodoItem (initialItems, todoId) {
         })
     }
 
+    // Function to delete an item
     function deleteItem(item){
         setIsLoading(true);
         setError(null);
@@ -61,6 +65,7 @@ export default function useTodoItem (initialItems, todoId) {
         })
     }
 
+    // Function to update an item
     function updateItem(item) {
         setIsLoading(true);
         setError(null);

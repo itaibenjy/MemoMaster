@@ -1,3 +1,5 @@
+// Importing necessary components from the mdb-react-ui-kit library and the useState and useEffect hooks from React
+// Importing useLogout, useThemeContext, LogoDark, LogoLight and useAuthContext from their respective files
 import { useEffect, useState } from "react";
 import { useLogout } from "../hooks/useLogout"
 import { useAuthContext } from "../hooks/useAuthContext"
@@ -6,6 +8,7 @@ import {useThemeContext} from "../hooks/useThemeContext";
 import LogoLight from '../assets/images/NavBarLogoLight.png'
 import LogoDark from '../assets/images/NavBarLogoDark.png'
 
+// Navigation bar component
 function NavBar(){
 
   const { logout } = useLogout()
@@ -15,6 +18,7 @@ function NavBar(){
   const [switchValue, setSwitchValue] = useState(false);
   const [showBasic, setShowBasic] = useState(false);
 
+  // Handles the click event for the logout button
   function handleClick() {
     logout()
   }
@@ -25,8 +29,10 @@ function NavBar(){
     }
   },[theme])
 
+  // Handles the change event for the theme switch
   function handleSwitch(event) {
     setSwitchValue(event.target.checked)
+    // Updates the theme
     if (switchValue) {
       updateTheme('light')
     } else {
@@ -38,6 +44,7 @@ function NavBar(){
     <MDBNavbar expand='md' sticky className='semi-transparent'>
         <MDBContainer fluid>
 
+        {/* Logo */}
         <MDBNavbarBrand tag="div" className="my-0 py-0">
           { theme === 'light' ?
           <img src={LogoLight} alt="Logo" height="30" loading="lazy" />
@@ -46,6 +53,7 @@ function NavBar(){
           }
         </MDBNavbarBrand>
         
+        {/* Navbar toggler */}
         <MDBNavbarToggler
           aria-controls='navbarSupportedContent'
           aria-expanded='false'
@@ -55,6 +63,7 @@ function NavBar(){
           <MDBIcon icon='bars' fas />
         </MDBNavbarToggler>
 
+        {/* Navbar items */}
         <MDBCollapse navbar show={showBasic}>
           <MDBNavbarNav className="mr-auto mb-2 mb-sm-0">
 
@@ -63,6 +72,7 @@ function NavBar(){
             </MDBContainer>
           </MDBNavbarItem>
 
+          {/* Logout button */}
           <MDBNavbarItem className=''>
             <MDBContainer className='d-flex align-items-center justify-content-start ms-auto mt-1 p-0'>
               {user && 
@@ -70,6 +80,7 @@ function NavBar(){
             </MDBContainer>
           </MDBNavbarItem>
 
+          {/* Theme switch */}
           <MDBNavbarItem className=''>
             <MDBContainer className='d-flex align-items-center justify-content-start mt-2 p-0'>
               <MDBIcon fas icon="sun" className="mx-2" />

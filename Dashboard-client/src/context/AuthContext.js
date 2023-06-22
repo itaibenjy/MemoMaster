@@ -1,7 +1,9 @@
 import { createContext, useReducer, useEffect } from "react";
 
+// Create the authentication context
 export const AuthContext = createContext();
 
+// Handling authentication state updates
 export function authReducer(state, action) {
     switch (action.type) {
         case "LOGIN":
@@ -13,6 +15,7 @@ export function authReducer(state, action) {
     }
 }
 
+// Authentication context provider 
 export function AuthContextProvider({ children }){
     const [state, dispatch] = useReducer(authReducer, {
         user: null,

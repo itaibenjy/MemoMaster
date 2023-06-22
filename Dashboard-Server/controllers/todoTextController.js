@@ -1,7 +1,8 @@
+// Import ToDo models
 const ToDoText = require("../models/ToDoText");
 const ToDoList = require("../models/ToDoList");
 
-
+// Create a new sub to do for the authenticated user
 async function saveToDoText(req, res) {
     const { content, ifDone } = req.body;
     if (!content) {
@@ -30,7 +31,7 @@ async function saveToDoText(req, res) {
     }
   }
   
-
+// Update a sub to do by ID for the authenticated user
 async function updateToDoTextById(req, res) {
     try {
         console.log(req.body);
@@ -43,6 +44,7 @@ async function updateToDoTextById(req, res) {
     }
 }
 
+// Delete a sub to do by ID for the authenticated user
 async function deleteToDoTextById(req, res) {
     try {
       const todoTextId = req.params.id;
@@ -70,5 +72,5 @@ async function deleteToDoTextById(req, res) {
     }
   }
   
-
+// Export the functions to be used in other files
 module.exports = { saveToDoText, updateToDoTextById, deleteToDoTextById }

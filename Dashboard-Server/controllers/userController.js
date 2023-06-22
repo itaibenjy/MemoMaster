@@ -1,11 +1,13 @@
+// Import User model
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
-//create a jwt token
+// Create a jwt token
 function createToken(_id){
     return jwt.sign({ _id }, process.env.JWT_SECRET, { expiresIn: '1d' });
 }
 
+// User login
 async function loginUser(req, res){
     const { username, password } = req.body;
 
@@ -26,7 +28,7 @@ async function loginUser(req, res){
 };
 
 
-// signup user
+// Sign-Up user
 async function signupUser(req, res){
     const { username, password, firstName, lastName, email } = req.body;
 
@@ -47,7 +49,5 @@ async function signupUser(req, res){
     }
 }
 
-module.exports = {
-    loginUser,
-    signupUser,
-};
+// Export the functions to be used in other files
+module.exports = { loginUser, signupUser };

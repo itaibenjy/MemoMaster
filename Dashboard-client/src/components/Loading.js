@@ -1,5 +1,7 @@
+// Importing necessary components from the mdb-react-ui-kit library
 import { MDBModal, MDBModalDialog, MDBModalContent, MDBModalBody, MDBSpinner } from 'mdb-react-ui-kit';
 
+// The Loading component renders a modal dialog with a spinner, indicating that the content is loading
 function Loading() {
     return (
         <MDBModal tabIndex="-1" staticBackdrop show>

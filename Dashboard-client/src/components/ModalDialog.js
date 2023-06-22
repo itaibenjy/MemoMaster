@@ -1,3 +1,4 @@
+// Importing necessary components from the mdb-react-ui-kit library and the useState hook from React
 import React, { useState } from 'react';
 import {
   MDBBtn,
@@ -10,6 +11,7 @@ import {
   MDBModalFooter,
 } from 'mdb-react-ui-kit';
 
+// ModalDialog component
 export default function ModalDialog({title, content, btnLabel, btnColor, handleClick, showModel, setShowModal, toggleShow}) {
 
   return (

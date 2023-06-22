@@ -1,9 +1,11 @@
+// Import ToDo models
 const ToDoList = require("../models/ToDoList");
 const ToDoText = require("../models/ToDoText");
 
-
+// Get all todo for the authenticated user
 async function getToDo(req, res) {
     try {
+      // Get todo lists for the authenticated user and populate the childText field
       const todolists = await ToDoList.find({ ownerUser: req.user._id }).populate('childText');
       res.json(todolists);
     } catch (error) {
@@ -11,7 +13,7 @@ async function getToDo(req, res) {
     }
   }
   
-
+// Create a new to do list for the authenticated user
 async function saveToDoList(req, res) {
     const { title, color, ifDone } = req.body;
     if (!title) {
@@ -25,7 +27,7 @@ async function saveToDoList(req, res) {
     } 
 }
 
-
+// Delete a to do List by ID for the authenticated user with all its tasks
 async function deleteListWithChildText(req, res) {
     try {
       // Find the list to be deleted
@@ -50,6 +52,7 @@ async function deleteListWithChildText(req, res) {
     }
   }
 
+// Update a to do list by ID for the authenticated user
 async function updateToDoList(req, res) {
     try {
         
@@ -63,4 +66,5 @@ async function updateToDoList(req, res) {
     }
 }
 
+// Export the functions to be used in other files
 module.exports = { getToDo, saveToDoList, updateToDoList, deleteListWithChildText }

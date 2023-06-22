@@ -1,5 +1,7 @@
+// Import the useState and useEffect hooks from React
 import {useState, useEffect} from 'react';
-import { useAuthContext } from './useAuthContext'// Import the useState hook from React
+// Importing useAuthContext hook from useAuthContext
+import { useAuthContext } from './useAuthContext'
 
 // Define a custom hook to manage notes
 export function useNotes() {

@@ -1,12 +1,13 @@
+// Importing necessary components from the mdb-react-ui-kit library and the useState hook from React
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 
-// components
+// Importing the Error and LoginInput components, useLogin hook from their respective files
 import LoginInput from "./LoginInput";
 import Error from './Error';
 import { MDBSpinner, MDBBtn, MDBCol, MDBRow, MDBContainer} from 'mdb-react-ui-kit';
 
-
+// The Login component is a form that allows users to log in
 function Login(){
   const { login, error, isLoading } = useLogin()
 
