@@ -21,12 +21,10 @@ function ThemeProvider({ children }) {
   useEffect(() => {
     try{
       const savedTheme = document.cookie.split('; ').find(row => row.startsWith('theme=')).split('=')[1];
-      console.log(savedTheme)
       if (savedTheme) {
         setTheme(savedTheme);
       }
     } catch (err) {
-      console.log(err)
     }
     
   }, []);
