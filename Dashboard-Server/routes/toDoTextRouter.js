@@ -1,11 +1,11 @@
 const { Router } = require("express");
-// const requireAuth = require('../middleware/requireAuth')
+const requireAuth = require('../middleware/requireAuth')
 
 const { saveToDoText, updateToDoTextById, deleteToDoTextById } = require("../controllers/todoTextController")
 
 const router = Router()
 
-// router.use(requireAuth)
+router.use(requireAuth)
 
 router.post("/:id", (req, res) => saveToDoText(req, res)); // :id => id of the to do List its belong
 
