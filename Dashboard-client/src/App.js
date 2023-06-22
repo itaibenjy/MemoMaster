@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route} from "react-router-dom"
 // pages and components
 import Authenticate from "./pages/Authenticate";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 import NavBar from "./components/NavBar"
 
 
@@ -31,6 +32,7 @@ function App() {
         <div >
           <NavBar /> 
           <Routes>
+            <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Authenticate />} />
             <Route path="/home" element={<Home />} />
           </Routes>
