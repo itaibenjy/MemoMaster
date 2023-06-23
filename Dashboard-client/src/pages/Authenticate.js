@@ -54,8 +54,8 @@ export default function Authenticate() {
   // Rendering the component
   //style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 80px)' }}
   return (<>
-  <MDBContainer className='containter col-xxxl-8 px-4 py-1' style={{marginTop: "10%", marginBottom: "10%"}}>
-      <MDBContainer className="row align-items-center g-lg-5 p-5">
+  <MDBContainer className='containter col-xxxl-8 px-1 py-1' style={{marginTop: "10%", marginBottom: "10%"}}>
+      <MDBContainer className="row align-items-center g-lg-5 p-2">
         <MDBContainer className="col-lg-7 text-center text-lg-start">
           { theme === 'light' ?
           <img src={LogoLight} alt="Logo" width="80%" loading="lazy" />
