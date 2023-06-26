@@ -46,7 +46,6 @@ export function useSignup(){
 
         // If the response is not ok, log the response and set the error state
         if (!response.ok) {
-            console.log(response)
             setError(data.error)
         } 
 
