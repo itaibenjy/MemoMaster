@@ -7,7 +7,6 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import NavBar from "./components/NavBar"
 
-
 // intercepting fetch requests to add the server url and to remove the token if it is expired
 const originalFetch = window.fetch;
 window.fetch =async function (resource, init) {
@@ -23,8 +22,7 @@ window.fetch =async function (resource, init) {
   return response;
 };
 
-
-
+// main App component
 function App() {
   return (
     <div className="App">

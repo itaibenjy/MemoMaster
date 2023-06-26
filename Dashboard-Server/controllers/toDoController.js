@@ -1,7 +1,8 @@
+// Import the ToDoList and ToDoText models
 const ToDoList = require("../models/ToDoList");
 const ToDoText = require("../models/ToDoText");
 
-
+// Get all the ToDoLists for the authenticated user
 async function getToDo(req, res) {
     try {
       const todolists = await ToDoList.find({ ownerUser: req.user._id }).populate('childText');
@@ -9,9 +10,9 @@ async function getToDo(req, res) {
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
-  }
-  
+}
 
+// Create a new ToDoList for the authenticated user
 async function saveToDoList(req, res) {
     const { title, color, ifDone } = req.body;
     if (!title) {
@@ -25,7 +26,7 @@ async function saveToDoList(req, res) {
     } 
 }
 
-
+// Delete a ToDoList and all its child ToDoTexts
 async function deleteListWithChildText(req, res) {
     try {
       // Find the list to be deleted
@@ -41,15 +42,16 @@ async function deleteListWithChildText(req, res) {
       // Delete the list
       await ToDoList.findByIdAndDelete(req.params.id);
   
-      // Delete the all the sub tasks that the list has
+      // Delete all the sub tasks that the list has
       await ToDoText.deleteMany({ _id: { $in: childTextIds } });
       
       res.status(200).json({ message: 'List deleted successfully' });
     } catch (error) {
       res.status(500).json({error: error.message});
     }
-  }
+}
 
+// Update a ToDoList for the authenticated user
 async function updateToDoList(req, res) {
     try {
         
@@ -63,4 +65,5 @@ async function updateToDoList(req, res) {
     }
 }
 
+// Export the functions to be used in other files
 module.exports = { getToDo, saveToDoList, updateToDoList, deleteListWithChildText }

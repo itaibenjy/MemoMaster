@@ -1,9 +1,11 @@
+
+// Importing required modules
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const validator = require('validator');
 
+// Creating a new mongoose schema for the user
 const Schema = mongoose.Schema;
-
 const userSchema = new Schema({
     username: {
         type: String,
@@ -34,6 +36,7 @@ const userSchema = new Schema({
         trim: true,
    }
 }, { timestamps: true })
+
 
 
 // static signup method

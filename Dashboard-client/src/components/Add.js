@@ -1,42 +1,48 @@
-import { useState } from 'react';
-import {MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon, MDBContainer, MDBTooltip} from 'mdb-react-ui-kit';
+import React, { useState } from 'react';
+import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBTooltip, MDBIcon } from 'mdb-react-ui-kit';
 import NoteModal from './NoteModal';
 import TodoModal from './TodoModal';
 
-export default function Add({addNote, addTodoList}) {
+function Add({ addNote, addTodoList }) {
+  // Define state variables for showing/hiding the note and todo modals
+  const [showAddNote, setShowAddNote] = useState(false);
+  const [showAddTodoList, setShowAddTodoList] = useState(false);
 
+  // Define functions for toggling the note and todo modals
+  function toggleAddNote() {
+    setShowAddNote(!showAddNote);
+  }
 
-    const [showAddNote, setShowAddNote] = useState(false)
-    const [showAddTodoList, setShowAddTodoList] = useState(false)
+  function toggleAddTodoList() {
+    setShowAddTodoList(!showAddTodoList);
+  }
 
-    function toggleAddNote() {
-        setShowAddNote(!showAddNote)
-    }
+  // Define functions for creating new notes and todo lists
+  async function createNote(title, content, color) {
+    await addNote({
+      title,
+      content,
+      color
+    });
+  }
 
-    function toggleAddTodoList() {
-      setShowAddTodoList(!showAddTodoList)
-    }
+  async function createTodoList(title, color) {
+    await addTodoList({
+      title,
+      color
+    });
+  }
 
-    async function createNote(title, content , color) {
-        await addNote({
-            title,
-            content,
-            color
-        })
-    }
+  // Render the component
+  return (
+    <>
+      {/* Render the note modal */}
+      <NoteModal key="1" modalTitle="Add New Note" modalButton="Create Note" showAddNote={showAddNote} setShowAddNote={setShowAddNote} toggleShowAddNote={toggleAddNote} createUpdateNote={createNote} />
 
-    async function createTodoList(title, color) {
-      await addTodoList({
-          title,
-          color
-      })
-    }
+      {/* Render the todo modal */}
+      <TodoModal key="2" modalTitle="Add New Todo List" modalButton="Create Todo List" showTodo={showAddTodoList} setShowTodo={setShowAddTodoList} toggleShowTodo={toggleAddTodoList} createUpdateTodo={createTodoList} />
 
-
-      return (
-      <>
-      <NoteModal key="1" modalTitle="Add New Note" modalButton="Create Note" showAddNote={showAddNote} setShowAddNote={setShowAddNote} toggleShowAddNote={toggleAddNote} createUpdateNote={createNote}/>
-      <TodoModal key="2" modalTitle="Add New Todo List" modalButton="Create Todo List" showTodo={showAddTodoList} setShowTodo={setShowAddTodoList} toggleShowTodo={toggleAddTodoList} createUpdateTodo={createTodoList}/>
+      {/* Render the dropdown menu for adding new notes and todo lists */}
       <MDBDropdown dropleft group>
         <MDBTooltip tag="span" title={"Add New Note or To Do"}>
           <MDBDropdownToggle color="link" > <MDBIcon fas icon='plus' size='lg' /> </MDBDropdownToggle>
@@ -47,5 +53,7 @@ export default function Add({addNote, addTodoList}) {
         </MDBDropdownMenu>
       </MDBDropdown>
     </>
-      );
+  );
 }
+
+export default Add;

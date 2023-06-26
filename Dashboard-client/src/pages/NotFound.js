@@ -2,6 +2,7 @@
 import { MDBBtn, MDBContainer, MDBTypography } from 'mdb-react-ui-kit'
 import NotFoundGif from '../assets/images/NotFound.gif'
 
+// this is the page that will be displayed when the user tries to access a page that does not exist
 export default function NotFound() {
     return (
         <MDBContainer className="d-flex align-items-center flex-column pt-5 " style={{ height: "calc(100vh - 50px)" }}>

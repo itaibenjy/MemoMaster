@@ -8,8 +8,6 @@ import {
   MDBTabsContent,
   MDBTabsPane,
   MDBContainer,
-  MDBRow,
-  MDBCol,
   MDBCard,
   MDBTypography,
 } from 'mdb-react-ui-kit';
@@ -24,7 +22,7 @@ import LogoDark from '../assets/images/NavBarLogoDark.png'
 
 // Defining the Authenticate component
 export default function Authenticate() {
-  // Setting up state for active tab
+  // Setting up state for active tab and modal visibility
   const [fillActive, setFillActive] = useState('tab1');
   const [showModal, setShowModal] = useState(false);
 
@@ -33,15 +31,12 @@ export default function Authenticate() {
   const {theme} = useThemeContext()
   const navigate = useNavigate()
 
-
-
   // Redirecting to home page if user is already logged in
   useEffect(() => {
     if (user) {
       navigate("/home")
     }}, [user])
 
-  
   // Handling click on tab
   const handleFillClick = (value) => {
     if (value === fillActive) {
@@ -52,10 +47,9 @@ export default function Authenticate() {
   };
 
   // Rendering the component
-  //style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'calc(100vh - 80px)' }}
   return (<>
   <MDBContainer className='containter col-xxxl-8 px-1 py-1' style={{marginTop: "10%", marginBottom: "10%"}}>
-      <MDBContainer className="row align-items-center g-lg-5 p-2">
+      <MDBContainer className="row align-items-center g-lg-5 p-2 m-0">
         <MDBContainer className="col-lg-7 text-center text-lg-start">
           { theme === 'light' ?
           <img src={LogoLight} alt="Logo" width="80%" loading="lazy" />

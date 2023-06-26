@@ -11,10 +11,6 @@ const router = require('./routes/router');
 // middleware - code that runs when server gets a request but before it gets passed to the routes
 app.use(cors())
 app.use(express.json());
-app.use((req, res, next) => {
-  // run code for every single request
-  next();
-});
 
 
 // routes middleware

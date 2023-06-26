@@ -14,7 +14,7 @@ router.use('/api/user', userRouter);
 // To Do routes
 router.use('/api/todo', toDoRouter);
 
-// To Do routes
+// To Do items routes
 router.use('/api/todoText', toDoTextRouter);
 
 // note routes

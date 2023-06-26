@@ -1,6 +1,9 @@
-import { MDBModal, MDBModalDialog, MDBModalContent, MDBModalBody, MDBSpinner } from 'mdb-react-ui-kit';
+// Importing necessary components from the mdb-react-ui-kit library
+import { MDBModal, MDBModalDialog, MDBSpinner } from 'mdb-react-ui-kit';
 
+// Defining a functional component called Loading
 function Loading() {
+    // Returning a modal with a spinner to indicate that the page is loading
     return (
         <MDBModal tabIndex="-1" staticBackdrop show>
             <MDBModalDialog centered className="modal-dialog-centered d-flex align-items-center justify-content-center">
@@ -12,4 +15,5 @@ function Loading() {
     );
 }
 
+// Exporting the Loading component as the default export of this module
 export default Loading;
