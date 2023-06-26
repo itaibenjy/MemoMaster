@@ -31,12 +31,12 @@ Memo Master is a comprehensive, full-stack web application built with MongoDB, E
 
 - **Sorting and Filtering**: Memo Master includes sorting and filtering capabilities. Users can sort notes and todo lists from new to old or vice versa, making it easier to find specific notes or tasks. Users can also filter notes by color or type, streamlining the process of locating relevant information.
 
-  ![Sort](./screenshots/Sort.png)
+  ![Sort](./screenshots/sort.png)
   ![Filter](./screenshots/Filter.png)
 
 - **Delete Confirmation**: To prevent accidental data loss, Memo Master asks users for confirmation before deleting any list.
 
-  ![Delete](./screenshots/Delete.png)
+  ![Delete](./screenshots/delete.png)
 
 ## Live Deploy
 
