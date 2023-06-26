@@ -56,3 +56,12 @@ Memo Master is deployed and live. You can access it [here](https://memomaster.ve
 - Add text formatting options to the notes.
 - Integrate with third-party apps like Google Calendar.
 - Create a mobile app for Memo Master.
+
+## Contributors
+
+The two main contributors are:
+
+- [Ben Merigen](https://github.com/benmerigen)
+- [Itai Benjy](https://github.com/itaibenjy)
+
+We're always open to new ideas, feel free to reach out to us!
